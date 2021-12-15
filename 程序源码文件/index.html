@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+    <div class="whole_page">
+        <div class="header">
+            <div class="content_head">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="logo" class="logo_img">
+                </div>
+                <div class="user_info">
+                    <p>欢迎使用企业物流系统,请登录</p>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="sign_module">
+                <div class="blank_b">
+                </div>
+                <div class="content_sign">
+                    <form action="index_login.php" method="post">
+                        <div class="sign_left">
+                            <div class="people">
+                                <p>用户：</p>
+                                <label><input name="people_p" checked type="radio" value="com"/>操作员</label>
+                                <label><input name="people_p" type="radio" value="war"/>仓库员</label>
+                                <!--<label><input name="people_p" type="radio" value="fre"/>物流员</label>-->
+                                <!--<label><input name="people_p" type="radio" value="adm"/>管理员</label>-->
+                                <!--<label><input name="people_p" type="radio" value="adm"/>教务处</label>-->
+                            </div>
+                            <p>员工号：</p>
+                            <input type="text" id="username_js" name="id_p"/>
+                            <p>密码：</p>
+                            <input type="password" id="password_js" name="password_p"/>
+                            <!--<input type="password" id="password_js" name="password_p" placeholder="密码不可见"/>-->
+                            <label class="remember_pass"><input id="remember_js" type="checkbox">记住密码</label>
+                        </div>
+                        <div class="sign_right">
+                            <div>
+                                <!--<button class="sign_but"></button>-->
+                                <input class="sign_button" type="submit" value="登录" onclick="submit();func();">
+                            </div>
+                            <div class="sign_href">
+                                <br>
+                                <p>新用户 , 还没有账号?</p>
+                                    <!--<br>-->
+                                    <!--<br>-->
+                                    <a href="register.html">注册</a>
+                                    <a href="javascript:;" onclick="javascript:alert('忘记密码请联系管理员!')">忘记密码?</a>
+                                <!--<p>到506找管理员!</p>-->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--<div class="bottom">
+            <div class="rights_exp_1">
+                保留所有权利，网站所有资源均来自互联网，侵权删除，禁止用于商业用途，网站所有设定为虚构。
+            </div>
+            &lt;!&ndash;<div class="content_bottom">
+                <div class="bottom_log_div">
+                    <img src="./img/logo2.png" alt="logo" class="bottom_logo">
+                </div>
+                <div class="bottom_rights_div">
+                    <div class="rights_exp_1">
+                        保留所有权利，网站所有资源均来自互联网，侵权删除，禁止用于商业用途，网站所有设定为虚构。
+                    </div>
+                    <div class="rights_exp_2">
+                        power by 课程设计小组    |    LINK:
+                        <a href="https://store.steampowered.com/">STEAM</a>
+                        <a href="https://www.baidu.com/">百度</a>
+                    </div>
+                </div>
+            </div>&ndash;&gt;
+        </div>
+        <div class="blank_b" id="blank_4">
+        </div>-->
+    </div>
+<script>
+    var user = document.getElementById('username_js');
+    var pass = document.getElementById('password_js');
+    var check = document.getElementById('remember_js');
+    localUser = localStorage.getItem('user') || ''; //获取到user的值并保存
+    localPass = localStorage.getItem('pass') || ''; //获取到pwd的值并保存
+    user.value = localUser;
+    pass.value = localPass;
+    if (localUser !== '' && localPass !== '') {
+        check.setAttribute('checked', '');
+    }
+    function func() {
+        if (check.checked) {
+            localStorage.setItem('user', user.value);
+            localStorage.setItem('pass', pass.value);
+        } else {
+            localStorage.setItem('user', '');
+            localStorage.setItem('pass', '');
+        }
+    }
+</script>
+</body>
+<style>
+    body{
+        margin: 0;
+    }
+    p{
+        color: #b8b6b4;
+    }
+    label{
+        color: #b8b6b4;
+    }
+    .header {
+        background: #171A21;
+    }
+    .content_head {
+        display: flex;
+        /*flex的子元素没有float的效果*/
+        align-items: center;
+
+        height: 100px;
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .user_info p {
+        color: #b8b6b4;
+        letter-spacing: 2px;
+        margin-left: 800px;
+    }
+    .middle {
+    }
+    .blank_b {
+        height: 200px;
+    }
+    .sign_module {
+        height: 840px;
+        background:#343144;
+        /*
+        url("./img/steam_bg.jpg") no-repeat center top;*/
+    }
+    .content_sign {
+        margin: 0 auto;
+        width: 800px;
+        height: 400px;
+        display: table;
+        border: 3px solid #2A2C30;
+        border-radius:25px;
+        background: #2A2C30;
+        opacity:0.98;
+
+    }
+    .sign_left {
+        float: left;
+        margin: 80px 100px;
+    }
+    .sign_right {
+        float: left;
+        margin-left: 110px;
+    }
+    .remember_pass {
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    .sign_button {
+        margin-top: 120px;
+        width: 120px; /* 宽度 */
+        height: 80px; /* 高度 */
+        border-width: 0; /* 边框宽度 */
+        border-radius: 3px; /* 边框半径 */
+        background: #1E90FF; /* 背景颜色 */
+        cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+        outline: none; /* 不显示轮廓线 */
+        color: white; /* 字体颜色 */
+        font-size: 17px; /* 字体大小 */
+    }
+    .sign_button:hover {
+        background: #005ab3; /* 背景颜色 */
+    }
+    .sign_href a {
+        /*font-size: 20px;*/
+        color: #b8b6b4;
+    }
+    .sign_href a:hover {
+        font-size: 20px;
+        color: #b8b6b4;
+        text-decoration:none;
+    }
+    .bottom {
+        background: #343144;
+        height: 62px;
+    }
+    .content_bottom {
+        margin: 0 auto;
+        width: 1200px;
+        height: 62px;
+    }
+    .bottom_log_div {
+        height: 62px;
+        float: left;
+    }
+    .bottom_rights_div {
+        line-height: 62px;
+        font-size: 16px;
+        color: #D3D4D8;
+    }
+    .bottom_rights_div a{
+        font-size: 10px;
+        color: #D3D4D8;
+    }
+    .rights_exp_1 {
+        line-height: 31px;
+    }
+    .rights_exp_2 {
+        line-height: 31px;
+    }
+    #blank_4 {
+        background: #343144;
+        height: 20px;
+    }
+</style>
+</html>
+
+
+
